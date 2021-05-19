@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Converted URLs</h1>
+    {% for url in urls %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + url.author.image_file) }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ url.author.username }}</a>
+              <small class="text-muted">{{ url.date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <h2><a class="article-title" href="{{ url.url }}" target="_blank">{{ url.url }}</a></h2>
+            <p class="article-content">{{ url.name }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
